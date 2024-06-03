@@ -1,4 +1,8 @@
 <script setup lang="ts">
+const emit = defineEmits<{
+    squareClick: [square: string]
+}>()
+
 const rows = [8, 7, 6, 5, 4, 3, 2, 1]
 const cols = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
 
@@ -16,13 +20,18 @@ function getColor(x: number, y: number) {
 
 const lastClickedSquare = ref('')
 
-function onClick(square: string) {
+function onSquareClick(square: string) {
     lastClickedSquare.value = square
+
+    emit('squareClick', square)
 }
 </script>
 
 <template>
-    <div :style="style">
+    <div
+        :style="style"
+        class="overflow-hidden rounded"
+    >
         <div
             v-for="(row, y) in rows" :key="row"
             class="flex"
@@ -32,7 +41,7 @@ function onClick(square: string) {
                 :key="col"
                 class="relative size-20 cursor-pointer font-bold"
                 :class="getColor(x, y)"
-                @click="onClick(`${col}${row}`)"
+                @click="onSquareClick(`${col}${row}`)"
             >
                 <span
                     v-if="col === 'a'"

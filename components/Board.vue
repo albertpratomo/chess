@@ -1,16 +1,38 @@
 <script setup lang="ts">
+interface Props {
+    theme: 'Green' | 'Brown' | 'Purple'
+}
+
+const props = defineProps<Props>()
+
 const emit = defineEmits<{
     squareClick: [square: string]
 }>()
 
+const style = computed(() => {
+    const themes = {
+        Green: {
+            '--dark': '#739552',
+            '--light': '#eaebcf',
+            '--highlight': 'rgba(255, 255, 51, 0.5)',
+        },
+        Brown: {
+            '--dark': '#805431',
+            '--light': '#c29a60',
+            '--highlight': 'rgba(168, 88, 50, 0.5)',
+        },
+        Purple: {
+            '--dark': '#8477ba',
+            '--light': '#f0f1f0',
+            '--highlight': 'rgba(183, 206, 221, 0.5)',
+        },
+    }
+
+    return themes[props.theme]
+})
+
 const rows = [8, 7, 6, 5, 4, 3, 2, 1]
 const cols = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
-
-const style = {
-    '--dark': '#739552',
-    '--light': '#eaebcf',
-    '--highlight': 'rgba(255, 255, 51, 0.5)',
-}
 
 function getColor(x: number, y: number) {
     return (x + y) % 2 === 0

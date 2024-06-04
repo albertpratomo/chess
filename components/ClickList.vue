@@ -7,8 +7,8 @@ defineProps<Props>()
 </script>
 
 <template>
-    <div class="rounded bg-stone-900 p-4 text-stone-200 font-medium">
-        <h3 class="mb-2">
+    <div class="text-stone-200 font-medium">
+        <h3>
             Click list
         </h3>
 

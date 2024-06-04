@@ -25,7 +25,7 @@ describe('index', () => {
         expect(e5).toContain(getByRole('mark', { name: 'Highlight e5' }))
     })
 
-    it.only('renders the click list', async () => {
+    it('renders the click list', async () => {
         const { getByRole } = await render(index)
 
         // Click e4, e5, f4.

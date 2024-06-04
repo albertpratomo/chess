@@ -7,9 +7,9 @@ function onSquareClick(square: string) {
 </script>
 
 <template>
-    <div class="grid gap-4 sm:grid-cols-[1fr_200px]">
+    <main class="grid grid-rows-[min-content_min-content] min-h-screen gap-4 bg-stone-800 p-4 md:grid-cols-[minmax(min-content,calc(100vh-2rem))_200px] md:grid-rows-1">
         <Board @square-click="onSquareClick" />
 
         <ClickList :squares="clickedSquares" />
-    </div>
+    </main>
 </template>

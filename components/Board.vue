@@ -39,7 +39,7 @@ function onSquareClick(square: string) {
             <div
                 v-for="(col, x) in cols"
                 :key="col"
-                class="relative size-20 cursor-pointer font-bold"
+                class="relative aspect-square w-1/8 cursor-pointer font-bold"
                 :class="getColor(x, y)"
                 @click="onSquareClick(`${col}${row}`)"
             >

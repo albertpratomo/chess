@@ -24,4 +24,17 @@ describe('index', () => {
         // Expect e5 to be highlighted.
         expect(e5).toContain(getByRole('mark', { name: 'Highlight e5' }))
     })
+
+    it.only('renders the click list', async () => {
+        const { getByRole } = await render(index)
+
+        // Click e4, e5, f4.
+        await fireEvent.click(getByRole('cell', { name: 'Square e4' }))
+        await fireEvent.click(getByRole('cell', { name: 'Square e5' }))
+        await fireEvent.click(getByRole('cell', { name: 'Square f4' }))
+
+        // Expect click list is rendered with correct content.
+        expect(getByRole('list', { name: 'Click list' }).textContent)
+            .toMatchInlineSnapshot(`"1. e42. e53. f4"`)
+    })
 })

@@ -41,6 +41,8 @@ function onSquareClick(square: string) {
                 :key="col"
                 class="relative aspect-square w-1/8 cursor-pointer font-bold"
                 :class="getColor(x, y)"
+                role="cell"
+                :aria-label="`Square ${col}${row}`"
                 @click="onSquareClick(`${col}${row}`)"
             >
                 <span
@@ -59,6 +61,8 @@ function onSquareClick(square: string) {
 
                 <div
                     v-if="lastClickedSquare === `${col}${row}`"
+                    role="mark"
+                    :aria-label="`Highlight ${col}${row}`"
                     class="size-full bg-[--highlight]"
                 />
             </div>
